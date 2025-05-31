@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Signal Aviator 2</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #2c3e50, #4ca1af);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 100vh;
+      text-align: center;
+      padding-top: 40px;
+    }
+
+    h1 {
+      font-size: 2rem;
+      color: #ffcc00;
+      margin-bottom: 10px;
+    }
+
+    #signal-box {
+      margin-top: 10px;
+      padding: 5vw;
+      background: rgba(0, 0, 0, 0.5);
+      border-radius: 10px;
+      box-shadow: 0 0 10px #00ffcc;
+      font-size: 1.4rem;
+      font-weight: bold;
+      width: 90%;
+      max-width: 500px;
+    }
+
+    .button {
+      margin: 5vw auto;
+      padding: 12px 25px;
+      background-color: #00cc99;
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: 0.3s;
+      width: 90%;
+      max-width: 300px;
+    }
+
+    .button:hover {
+      background-color: #00b388;
+    }
+
+    #input-section {
+      display: none;
+      margin-top: 10px;
+      width: 90%;
+      max-width: 300px;
+    }
+
+    #input-section p {
+      font-weight: bold;
+      margin-bottom: 6px;
+    }
+
+    #user-id {
+      padding: 10px;
+      border-radius: 5px;
+      border: none;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    #user-id::placeholder {
+      color: #ccc;
+    }
+
+    #validate-button {
+      margin-top: 10px;
+      padding: 10px;
+      width: 100%;
+      background-color: #00cc99;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+
+    #validate-button:hover {
+      background-color: #00b388;
+    }
+
+    #error-container {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 20px;
+    }
+
+    #error-message {
+      color: red;
+      font-weight: bold;
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+      text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff;
+    }
+
+    #topup-button a {
+      background-color: #ff0055;
+      padding: 12px 20px;
+      border-radius: 8px;
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      display: inline-block;
+      text-transform: uppercase;
+    }
+
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 1.5rem;
+      }
+
+      #signal-box {
+        font-size: 1.2rem;
+        padding: 5vw;
+      }
+
+      #error-message {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>SIGNAUX POUR AVIATOR</h1>
+  <div id="signal-box">Cliquez sur le bouton pour recevoir un signal</div>
+  <button class="button" onclick="showInput()">OBTENIR UN SIGNAL</button>
+
+  <div id="input-section">
+    <p>Entrez votre ID 1xBet :</p>
+    <input type="text" id="user-id" placeholder="VOTRE ID 1XBET">
+    <button id="validate-button" onclick="processID()">VALIDER</button>
+  </div>
+
+  <div id="error-container">
+    <div id="error-message">❌ Fonds insuffisants sur votre compte 1xBet.</div>
+    <div id="topup-button">
+      <a href="https://affpa.top/L?tag=d_4323630m_16307c_&site=4323630&ad=16307&r=registration" target="_blank">🔁 RECHARGER LE COMPTE</a>
+    </div>
+  </div>
+
+  <script>
+    function showInput() {
+      document.getElementById('signal-box').innerText = 'Chargement...';
+      setTimeout(() => {
+        document.getElementById('signal-box').innerText = 'Veuillez entrer votre ID 1xBet pour recevoir le signal.';
+        document.getElementById('input-section').style.display = 'block';
+      }, 1500);
+    }
+
+    function processID() {
+      const id = document.getElementById('user-id').value.trim();
+      if (id.length < 5) return alert('Veuillez entrer un ID valide.');
+      document.getElementById('error-container').style.display = 'flex';
+      if (navigator.vibrate) {
+        navigator.vibrate(300);
+      }
+    }
+  </script>
+</body>
+</html>
